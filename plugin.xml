@@ -21,6 +21,9 @@
         <clobbers target="SQLitePlugin" />
     </js-module>
 
+    <!-- Hook to configure iOS build settings -->
+    <hook type="after_plugin_install" src="hooks/ios_add_linker_flags.js" />
+
     <!-- android -->
     <platform name="android">
         <!-- Cordova >= 3.0.0 -->
@@ -65,19 +68,21 @@
             </feature>
         </config-file>
 
-        <framework src="libiconv.dylib" />
-        <framework src="libc++.dylib" />
+        <framework src="libiconv.tbd" />
+        <framework src="libc++.tbd" />
         <framework src="Security.framework" />
-        <framework src="libxml2.dylib" />
+        <framework src="libxml2.tbd" />
+        <framework src="libz.tbd" />
 
         <header-file src="src/ios/SQLitePlugin.h" />
         <source-file src="src/ios/SQLitePlugin.m" />
 
-        <source-file src="src/ios/native/libgeos.a" framework="true" />
-        <source-file src="src/ios/native/libgeos_c.a" framework="true" />
-        <source-file src="src/ios/native/libproj.a" framework="true" />
-        <source-file src="src/ios/native/libspatialite.a" framework="true" />
-        <source-file src="src/ios/native/libsqlite3.a" framework="true" />
+        <!-- Copy static libraries to plugin directory -->
+        <resource-file src="src/ios/native/libsqlite3.a" target="lib/libsqlite3.a" />
+        <resource-file src="src/ios/native/libproj.a" target="lib/libproj.a" />
+        <resource-file src="src/ios/native/libgeos_c.a" target="lib/libgeos_c.a" />
+        <resource-file src="src/ios/native/libgeos.a" target="lib/libgeos.a" />
+        <resource-file src="src/ios/native/libspatialite.a" target="lib/libspatialite.a" />
 
         <!-- GENERATED HEADER INCLUDES -->
         <!-- see GeneratePluginConfigHeaders.py -->
