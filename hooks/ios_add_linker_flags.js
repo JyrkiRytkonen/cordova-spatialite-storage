@@ -71,14 +71,21 @@ module.exports = function(context) {
             content += `\nLIBRARY_SEARCH_PATHS = ${librarySearchPath}\n`;
         }
 
-        // Add OTHER_LDFLAGS
+        // Add OTHER_LDFLAGS - preserve existing flags including -ObjC
         if (content.includes('OTHER_LDFLAGS =')) {
-            content = content.replace(
-                /OTHER_LDFLAGS = (.*)/,
-                `OTHER_LDFLAGS = $1 ${linkerFlags}`
-            );
+            // Check if spatialite flags are already present
+            if (!content.includes('-lspatialite')) {
+                content = content.replace(
+                    /OTHER_LDFLAGS = ([^\n]*)/,
+                    (match, existingFlags) => {
+                        const flags = existingFlags.trim();
+                        return `OTHER_LDFLAGS = ${flags} ${linkerFlags}`;
+                    }
+                );
+            }
         } else {
-            content += `\nOTHER_LDFLAGS = ${linkerFlags}\n`;
+            // For cordova-ios 7+, ensure -ObjC is included
+            content += `\nOTHER_LDFLAGS = -ObjC ${linkerFlags}\n`;
         }
 
         fs.writeFileSync(filePath, content, 'utf8');
