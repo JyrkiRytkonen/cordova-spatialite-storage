@@ -36,37 +36,37 @@
         <source-file src="src/android/io/liteglue/SQLitePlugin.java" target-dir="src/io/liteglue"/>
         <source-file src="src/android/io/liteglue/SpatialiteDatabase.java" target-dir="src/io/liteglue"/>
 
-        <source-file src="src/android/org/spatialite/AbstractCursor.java" target-dir="src/org/spatialite" />
-        <source-file src="src/android/org/spatialite/AbstractWindowedCursor.java" target-dir="src/org/spatialite" />
-        <source-file src="src/android/org/spatialite/CursorWindow.java" target-dir="src/org/spatialite" />
-        <source-file src="src/android/org/spatialite/CursorWindowAllocationException.java" target-dir="src/org/spatialite" />
-        <source-file src="src/android/org/spatialite/DatabaseErrorHandler.java" target-dir="src/org/spatialite" />
-        <source-file src="src/android/org/spatialite/DefaultDatabaseErrorHandler.java" target-dir="src/org/spatialite" />
-        <source-file src="src/android/org/spatialite/database/CloseGuard.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteClosable.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteConnection.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteConnectionPool.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteCursor.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteCursorDriver.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteCustomExtension.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteCustomFunction.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteDatabase.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteDatabaseConfiguration.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteDebug.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteDirectCursorDriver.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteGlobal.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteOpenHelper.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteProgram.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteQuery.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteQueryBuilder.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteSession.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteStatement.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteStatementInfo.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/spatialite/database/SQLiteStatementType.java" target-dir="src/org/spatialite/database" />
-        <source-file src="src/android/org/proj4/GridInfo.java" target-dir="src/org/proj4" />
-        <source-file src="src/android/org/proj4/package-info.java" target-dir="src/org/proj4" />
-        <source-file src="src/android/org/proj4/PJ.java" target-dir="src/org/proj4" />
-        <source-file src="src/android/org/proj4/PJException.java" target-dir="src/org/proj4" />
+        <source-file src="src/android/spatialite/AbstractCursor.java" target-dir="src/org/spatialite" />
+        <source-file src="src/android/spatialite/AbstractWindowedCursor.java" target-dir="src/org/spatialite" />
+        <source-file src="src/android/spatialite/CursorWindow.java" target-dir="src/org/spatialite" />
+        <source-file src="src/android/spatialite/CursorWindowAllocationException.java" target-dir="src/org/spatialite" />
+        <source-file src="src/android/spatialite/DatabaseErrorHandler.java" target-dir="src/org/spatialite" />
+        <source-file src="src/android/spatialite/DefaultDatabaseErrorHandler.java" target-dir="src/org/spatialite" />
+        <source-file src="src/android/spatialite/database/CloseGuard.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteClosable.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteConnection.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteConnectionPool.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteCursor.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteCursorDriver.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteCustomExtension.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteCustomFunction.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteDatabase.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteDatabaseConfiguration.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteDebug.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteDirectCursorDriver.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteGlobal.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteOpenHelper.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteProgram.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteQuery.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteQueryBuilder.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteSession.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteStatement.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteStatementInfo.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/spatialite/database/SQLiteStatementType.java" target-dir="src/org/spatialite/database" />
+        <source-file src="src/android/proj4/GridInfo.java" target-dir="src/org/proj4" />
+        <source-file src="src/android/proj4/package-info.java" target-dir="src/org/proj4" />
+        <source-file src="src/android/proj4/PJ.java" target-dir="src/org/proj4" />
+        <source-file src="src/android/proj4/PJException.java" target-dir="src/org/proj4" />
 
         <source-file src="src/android/native/armeabi-v7a/libandroid_spatialite.so" target-dir="libs/armeabi-v7a/" />
         <source-file src="src/android/native/x86/libandroid_spatialite.so" target-dir="libs/x86/" />

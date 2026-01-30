@@ -12,8 +12,8 @@ import android.util.Log;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
-import spatialite.database.SQLiteDatabase;
-import spatialite.database.SQLiteStatement;
+import org.spatialite.database.SQLiteDatabase;  
+import org.spatialite.database.SQLiteStatement; 
 
 import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;

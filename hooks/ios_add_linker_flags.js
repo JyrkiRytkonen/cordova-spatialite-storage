@@ -7,6 +7,12 @@ module.exports = function(context) {
     const projectRoot = context.opts.projectRoot;
     const platformPath = path.join(projectRoot, 'platforms/ios');
     
+    // Skip if iOS platform is not installed
+    if (!fs.existsSync(platformPath)) {
+        console.log('iOS platform not found, skipping iOS configuration');
+        return;
+    }
+    
     // Use cordova-ios API for compatibility (works with cordova-ios 5.0.0+)
     let appName = 'App'; // Default
     try {

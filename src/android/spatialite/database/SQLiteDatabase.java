@@ -2225,7 +2225,7 @@ public final class SQLiteDatabase extends SQLiteClosable {
             stmt = compileStatement("SELECT changes()");
             changes = stmt.simpleQueryForLong();
         } catch (Exception e) {
-            LOG.e("SpatialiteDatabase", "Error getting changed row count", e);
+            Log.e(TAG, "Error getting changed row count", e);
         } finally {
             if (stmt != null) stmt.close();
         }
