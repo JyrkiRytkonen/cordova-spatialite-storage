@@ -92,12 +92,12 @@
         <header-file src="src/ios/SQLitePlugin.h" />
         <source-file src="src/ios/SQLitePlugin.m" />
 
-        <!-- Copy static libraries to plugin directory -->
-        <resource-file src="src/ios/native/libsqlite3.a" target="lib/libsqlite3.a" />
-        <resource-file src="src/ios/native/libproj.a" target="lib/libproj.a" />
-        <resource-file src="src/ios/native/libgeos_c.a" target="lib/libgeos_c.a" />
-        <resource-file src="src/ios/native/libgeos.a" target="lib/libgeos.a" />
-        <resource-file src="src/ios/native/libspatialite.a" target="lib/libspatialite.a" />
+        <!-- After (CORRECT — links .a at build time) -->
+        <lib-file src="src/ios/native/libsqlite3.a" />
+        <lib-file src="src/ios/native/libproj.a" />
+        <lib-file src="src/ios/native/libgeos_c.a" />
+        <lib-file src="src/ios/native/libgeos.a" />
+        <lib-file src="src/ios/native/libspatialite.a" />
 
         <!-- GENERATED HEADER INCLUDES -->
         <!-- see GeneratePluginConfigHeaders.py -->
