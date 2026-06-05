@@ -472,7 +472,10 @@
       failed = (tx, err) ->
         txLocks[tx.db.dbname].inProgress = false
         tx.db.startNextTransaction()
-        if tx.error then tx.error newSQLError("error while trying to roll back: " + err.message, err.code)
+        if tx.error
+          rollbackError = newSQLError("error while trying to roll back: " + err.message, err.code)
+          rollbackError.previousError = txFailure
+          tx.error rollbackError
         return
 
       @finalized = true
