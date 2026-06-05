@@ -443,10 +443,13 @@
             }
         };
         failed = function (tx, err) {
+            var rollbackError;
             txLocks[tx.db.dbname].inProgress = false;
             tx.db.startNextTransaction();
             if (tx.error) {
-                tx.error(newSQLError("error while trying to roll back: " + err.message, err.code));
+                rollbackError = newSQLError("error while trying to roll back: " + err.message, err.code);
+                rollbackError.previousError = txFailure;
+                tx.error(rollbackError);
             }
         };
         this.finalized = true;
