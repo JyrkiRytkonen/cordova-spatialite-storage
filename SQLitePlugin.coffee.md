@@ -33,24 +33,31 @@
 
     # Errors returned to callbacks must conform to `SqlError` with a code and message.
     # Some errors are of type `Error` or `string` and must be converted.
-    newSQLError = (error, code) ->
+    newSQLError = (error, code, cause) ->
       sqlError = error
       code = 0 if !code # unknown by default
 
+      options = if cause? then { cause: cause } else undefined
+
       if !sqlError
-        sqlError = new Error "a plugin had an error but provided no response"
+        sqlError = new Error "a plugin had an error but provided no response", options
         sqlError.code = code
 
       if typeof sqlError is "string"
-        sqlError = new Error error
+        sqlError = new Error error, options
         sqlError.code = code
 
       if !sqlError.code && sqlError.message
         sqlError.code = code
 
       if !sqlError.code && !sqlError.message
-        sqlError = new Error "an unknown error was returned: " + JSON.stringify(sqlError)
+        sqlError = new Error "an unknown error was returned: " + JSON.stringify(sqlError), options
         sqlError.code = code
+
+      # Fallback for the pass-through case (error was already an Error object)
+      # and for older engines that ignore the Error constructor options arg.
+      if options && sqlError.cause is undefined
+        sqlError.cause = cause
 
       return sqlError
 
@@ -472,10 +479,7 @@
       failed = (tx, err) ->
         txLocks[tx.db.dbname].inProgress = false
         tx.db.startNextTransaction()
-        if tx.error
-          rollbackError = newSQLError("error while trying to roll back: " + err.message, err.code)
-          rollbackError.previousError = txFailure
-          tx.error rollbackError
+        if tx.error then tx.error newSQLError("error while trying to roll back: " + err.message, err.code, txFailure)
         return
 
       @finalized = true

@@ -11,26 +11,32 @@
 
     txLocks = {};
 
-    newSQLError = function (error, code) {
-        var sqlError;
+    newSQLError = function (error, code, cause) {
+        var options, sqlError;
         sqlError = error;
         if (!code) {
             code = 0;
         }
+        options = (cause !== undefined && cause !== null) ? { cause: cause } : void 0;
         if (!sqlError) {
-            sqlError = new Error("a plugin had an error but provided no response");
+            sqlError = new Error("a plugin had an error but provided no response", options);
             sqlError.code = code;
         }
         if (typeof sqlError === "string") {
-            sqlError = new Error(error);
+            sqlError = new Error(error, options);
             sqlError.code = code;
         }
         if (!sqlError.code && sqlError.message) {
             sqlError.code = code;
         }
         if (!sqlError.code && !sqlError.message) {
-            sqlError = new Error("an unknown error was returned: " + JSON.stringify(sqlError));
+            sqlError = new Error("an unknown error was returned: " + JSON.stringify(sqlError), options);
             sqlError.code = code;
+        }
+        // Fallback for the pass-through case (error was already an Error object)
+        // and for older engines that ignore the Error constructor options arg.
+        if (options && sqlError.cause === undefined) {
+            sqlError.cause = cause;
         }
         return sqlError;
     };
@@ -443,13 +449,10 @@
             }
         };
         failed = function (tx, err) {
-            var rollbackError;
             txLocks[tx.db.dbname].inProgress = false;
             tx.db.startNextTransaction();
             if (tx.error) {
-                rollbackError = newSQLError("error while trying to roll back: " + err.message, err.code);
-                rollbackError.previousError = txFailure;
-                tx.error(rollbackError);
+                tx.error(newSQLError("error while trying to roll back: " + err.message, err.code, txFailure));
             }
         };
         this.finalized = true;
